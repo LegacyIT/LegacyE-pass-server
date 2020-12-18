@@ -35,7 +35,7 @@ const legacyGSSchema = new mongoose.Schema({
     type: String,
     default: 'Intern'
   },
-  courses: {
+  course: {
     type: String,
     enum: [
       'Graphics Design',
