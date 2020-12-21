@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
@@ -19,6 +20,7 @@ const GSRouter = require('./routes/GSRoutes');
 const app = express();
 
 // 1) GLOBAL Middlewares
+app.use(cors());
 // Set security HTTP headers
 app.use(helmet());
 

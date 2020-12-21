@@ -38,7 +38,7 @@ const legacyITSchema = new mongoose.Schema({
   },
   designation: {
     type: String,
-    enum: ['Frontend', 'Backend', 'UI/UX ', 'Mobile', 'FullStack'],
+    enum: ['Frontend', 'Backend', 'Mobile', 'FullStack', 'UI-UX'],
     required: [true, 'Department Designation is required']
   },
   createdAt: {

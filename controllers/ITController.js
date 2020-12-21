@@ -17,7 +17,7 @@ exports.uploadPhoto = catchAsync(async (req, res, next) => {
 
   const uploadedFile = await cloudinary.uploader.upload(req.file.path, {
     folder: 'LegacyE-pass/LegacyIT/',
-    public_id: `${req.body.name.split(' ')[0]}-${Date.now()}`,
+    public_id: `${req.body.name?.split(' ')[0]}-${Date.now()}`,
     format: 'jpeg',
     overwrite: true,
     transformation: [{ width: 500, height: 500, crop: 'limit', quality: 50 }]

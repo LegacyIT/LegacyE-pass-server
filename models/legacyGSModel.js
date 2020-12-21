@@ -44,7 +44,7 @@ const legacyGSSchema = new mongoose.Schema({
       'Web Development',
       'Digital Marketing'
     ],
-    required: [true, 'Department Course is required']
+    required: [true, 'Course is required']
   },
   createdAt: {
     type: Date,
