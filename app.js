@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const compression = require('compression');
 
 //ERROR HANDLERS
 const AppError = require('./utils/appError');
@@ -39,30 +40,13 @@ app.use(mongoSanitize({ replaceWith: '_' }));
 app.use(xss());
 
 //Prevent parameter pollution
-app.use(
-  hpp({
-    whitelist: [
-      'question',
-      'options',
-      'answer',
-      'level',
-      'subject',
-      'topic',
-      'explanation'
-    ]
-  })
-);
-
-// Limit requests from same IP
-const limiter = rateLimit({
-  max: 50,
-  windowMs: 30 * 60 * 1000,
-  message: 'Too many requests from this IP, please try again in an hour!'
-});
-app.use('/api', limiter);
-
-// Serving static files
-// app.use(express.static(`${__dirname}/public`));
+// app.use(
+//   hpp({
+//     whitelist: []
+//   })
+// );
+// Compression
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
